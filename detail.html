@@ -1,53 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalle del clima</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Detalle del clima</title>
 </head>
 
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Volver</a>
-      <h1>Detalle del clima</h1>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">App de Clima</a>
+            </div>
+        </nav>
+    </header>
 
-  <main>
+    <main class="container my-4">
 
-    <section>
-      <h2>Ciudad seleccionada</h2>
+        <section class="mb-4">
+            <h2>Ciudad seleccionada</h2>
 
-      <article>
-        <p>Temperatura: -- °C</p>
-        <p>Humedad: -- %</p>
-        <p>Viento: -- km/h</p>
-      </article>
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>Temperatura:</strong> 24°C</p>
+                    <p><strong>Humedad:</strong> 40%</p>
+                    <p><strong>Viento:</strong> 12 km/h</p>
+                </div>
+            </div>
+        </section>
 
-    </section>
+        <section>
+            <h2>Pronóstico semanal</h2>
+        
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Lunes</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Martes</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Miércoles</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Jueves</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
 
-    <section>
-      <h2>Pronóstico semanal</h2>
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Viernes</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Sábado</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
 
-      <article>
-        <ul>
-          <li>Lunes - --</li>
-          <li>Martes - --</li>
-          <li>Miércoles - --</li>
-          <li>Jueves - --</li>
-          <li>Viernes - --</li>
-        </ul>
-      </article>
+            <div class="row">
+        
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <p>Domingo</p>
+                          <p>☀️</p>
+                    </div>
+                </div>
+            </div>
+        
+        </section>
+    </main>
 
-    </section>
-
-  </main>
-
-  <footer>
-    <p>Proyecto Frontend - Módulo 2</p>
-  </footer>
+    <footer>
+        <p>Proyecto Frontend - Módulo 2</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
