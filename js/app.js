@@ -118,6 +118,7 @@ function goToDetail(id) {
   window.location.href = "detail.html";
 }
 const cityId = localStorage.getItem("selectedCity");
+
 if (cityId) {
   for (let i = 0; i < cities.length; i++) {
     if (cities[i].id == cityId) {

@@ -20,21 +20,31 @@
 
     <main class="container my-4">
 
-  <section class="mb-4">
-    <h2 id="city-name">Ciudad</h2>
+ <section class="city-detail">
+  <h2 class="city-detail__name" id="city-name">Ciudad</h2>
 
-    <div class="card">
-      <div class="card-body">
-        <p><strong>Temperatura:</strong> <span id="temp"></span></p>
-        <p><strong>Humedad:</strong> <span id="humidity"></span></p>
-        <p><strong>Viento:</strong> <span id="wind"></span></p>
-      </div>
+  <div class="card city-detail__card">
+    <div class="card-body">
+      <p class="city-detail__item">
+        <strong>Temperatura:</strong>
+        <span id="temp"></span>
+      </p>
+      <p class="city-detail__item">
+        <strong>Humedad:</strong>
+        <span id="humidity"></span>
+      </p>
+      <p class="city-detail__item">
+        <strong>Viento:</strong>
+        <span id="wind"></span>
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>Pronóstico semanal</h2>
-    <div class="row" id="forecast"></div>
+  <section class="forecast">
+  <h2 class="forecast__title">Pronóstico semanal</h2>
+
+  <div class="row forecast__grid" id="forecast">
   </section>
 
 </main>
