@@ -1,5 +1,9 @@
 .forecast {
-  &__item {
-    text-align: center;
+  &__grid {
+    gap: 1rem;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
   }
 }

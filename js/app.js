@@ -98,12 +98,13 @@ if (container) {
   for (let i = 0; i < cities.length; i++) {
     container.innerHTML += `
       <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5>${cities[i].name}</h5>
-            <p>${cities[i].temp}°C - ${cities[i].status}</p>
-            <button onclick="goToDetail(${cities[i].id})"
-              class="btn btn-primary">
+        <div class="card city-card">
+          <div class="card-body city-card__body">
+            <h5 class="city-card__name">${cities[i].name}</h5>
+            <p class="city-card__info">${cities[i].temp}°C - ${cities[i].status}</p>
+            <button class="btn btn-primary city-card__button"
+            onclick="goToDetail(${cities[i].id})"
+              >
               Ver detalle
             </button>
           </div>
