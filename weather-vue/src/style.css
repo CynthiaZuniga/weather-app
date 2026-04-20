@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.app__content {
+  padding: 2rem 0;
+}
+
+.main-header {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.main-nav__brand {
+  text-decoration: none;
+  font-weight: bold;
+  color: #222;
+  font-size: 1.2rem;
+}
+
+.main-footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.city-card {
+  border-radius: 8px;
+}
+
+.city-card__body {
+  text-align: center;
+}
+
+.city-card__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.city-card__info {
+  color: #666;
+}
+
+.city-card__button {
+  margin-top: 0.5rem;
+}
+
+.search-box {
+  margin-bottom: 1rem;
+}
+
+.search-box__input {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.6rem;
+}
+
+.message {
+  margin: 1rem 0;
+  color: #555;
+}
+
+.city-detail__card,
+.stats .card,
+.alerts .card {
+  margin-top: 1rem;
+}
