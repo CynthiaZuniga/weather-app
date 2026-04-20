@@ -1,51 +1,35 @@
 <template>
-  <div v-if="city">
-    <section class="city-detail mb-4">
-      <h2 class="city-detail__name">{{ city.name }}</h2>
-
-      <div class="card city-detail__card">
-        <div class="card-body">
-          <p class="city-detail__item">
-            <strong>Temperatura:</strong> {{ city.temp }}°C
-          </p>
-          <p class="city-detail__item">
-            <strong>Humedad:</strong> {{ city.humidity }}%
-          </p>
-          <p class="city-detail__item">
-            <strong>Viento:</strong> {{ city.wind }} km/h
-          </p>
-          <p class="city-detail__item">
-            <strong>Estado:</strong> {{ city.status }}
-          </p>
-        </div>
+  <div v-if="city" class="detail-page">
+    <section class="city-detail">
+      <div class="city-detail__header">
+        <h2 class="city-detail__name">{{ city.name }}</h2>
+        <button class="back-button" @click="goHome">
+          Volver
+        </button>
       </div>
-    </section>
 
-    <section class="forecast mb-4">
-      <h2 class="forecast__title">Pronóstico semanal</h2>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3 class="detail-card__title">Clima actual</h3>
 
-      <div class="row forecast__grid">
-        <div
-          v-for="day in city.forecast"
-          :key="day.day"
-          class="col-6 col-md-4 col-lg-3 mb-3"
-        >
-          <div class="card text-center">
-            <div class="card-body">
-              <p>{{ day.day }}</p>
-              <p>{{ day.status }}</p>
-              <p>{{ day.min }}° / {{ day.max }}°</p>
+          <div class="detail-card__weather">
+            <span class="detail-card__icon">
+              {{ getWeatherIcon(city.status) }}
+            </span>
+
+            <div>
+              <p class="detail-card__temp">{{ city.temp }}°C</p>
+              <p class="detail-card__status">{{ city.status }}</p>
             </div>
           </div>
+
+          <p><strong>Humedad:</strong> {{ city.humidity }}%</p>
+          <p><strong>Viento:</strong> {{ city.wind }} km/h</p>
         </div>
-      </div>
-    </section>
 
-    <section class="stats mb-4">
-      <h2 class="stats__title">Estadísticas de la semana</h2>
+        <div class="detail-card">
+          <h3 class="detail-card__title">Estadísticas</h3>
 
-      <div class="card">
-        <div class="card-body">
           <p><strong>Temperatura mínima:</strong> {{ stats.min }}°C</p>
           <p><strong>Temperatura máxima:</strong> {{ stats.max }}°C</p>
           <p><strong>Promedio:</strong> {{ stats.avg.toFixed(1) }}°C</p>
@@ -56,25 +40,40 @@
       </div>
     </section>
 
-    <section class="alerts mb-4">
-      <h2 class="alerts__title">Alertas de clima</h2>
+    <section class="forecast">
+      <h2 class="forecast__title">Pronóstico semanal</h2>
 
-      <div class="card">
-        <div class="card-body">
-          <p v-if="alerts.length === 0">
-            No hay alertas de clima para esta semana.
-          </p>
-
-          <p v-for="alert in alerts" :key="alert">
-            {{ alert }}
-          </p>
+      <div class="forecast-cards">
+        <div
+          v-for="day in city.forecast"
+          :key="day.day"
+          class="forecast-card"
+        >
+          <p class="forecast-card__day">{{ day.day }}</p>
+          <p class="forecast-card__icon">{{ getWeatherIcon(day.status) }}</p>
+          <p class="forecast-card__status">{{ day.status }}</p>
+          <p class="forecast-card__temp">{{ day.min }}° / {{ day.max }}°</p>
         </div>
       </div>
     </section>
 
-    <button class="btn btn-secondary" @click="goHome">
-      Volver
-    </button>
+    <section class="alerts">
+      <h2 class="alerts__title">Alertas de clima</h2>
+
+      <div class="alerts-box">
+        <p v-if="alerts.length === 0">
+          No hay alertas de clima para esta semana.
+        </p>
+
+        <p
+          v-for="alert in alerts"
+          :key="alert"
+          class="alerts-box__item"
+        >
+          {{ alert }}
+        </p>
+      </div>
+    </section>
   </div>
 
   <p v-else class="message">
@@ -113,6 +112,13 @@ export default {
   methods: {
     goHome() {
       this.$router.push('/')
+    },
+
+    getWeatherIcon(status) {
+      if (status === 'Soleado') return '☀️'
+      if (status === 'Nublado') return '⛅'
+      if (status === 'Lluvioso') return '🌧️'
+      return '🌤️'
     }
   }
 }
