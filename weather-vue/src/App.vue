@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app-shell">
     <header class="main-header">
       <nav class="main-nav container">
         <router-link to="/" class="main-nav__brand">
@@ -8,7 +8,7 @@
       </nav>
     </header>
 
-    <main class="container app__content">
+    <main class="container app-shell__content">
       <router-view />
     </main>
 
