@@ -27,9 +27,7 @@
               </span>
 
               <div>
-                <p class="detail-card__temp">
-                  {{ city.temp }}{{ unitSymbol }}
-                </p>
+                <p class="detail-card__temp">{{ city.temp }}{{ unitSymbol }}</p>
                 <p class="detail-card__status">{{ city.status }}</p>
               </div>
             </div>
@@ -127,17 +125,11 @@ export default {
     getWeatherIcon(status) {
       const normalized = status.toLowerCase()
 
-      if (
-        normalized.includes('lluv') ||
-        normalized.includes('rain')
-      ) {
+      if (normalized.includes('lluv') || normalized.includes('rain')) {
         return '🌧️'
       }
 
-      if (
-        normalized.includes('nubl') ||
-        normalized.includes('cloud')
-      ) {
+      if (normalized.includes('nubl') || normalized.includes('cloud')) {
         return '⛅'
       }
 

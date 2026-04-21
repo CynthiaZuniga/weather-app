@@ -5,8 +5,8 @@
     <form @submit.prevent="savePreferences" class="login-form">
       <label>Unidad de temperatura</label>
       <select v-model="unit">
-        <option value="°C">°C</option>
-        <option value="°F">°F</option>
+        <option value="metric">°C</option>
+        <option value="imperial">°F</option>
       </select>
 
       <label>Tema</label>
@@ -17,6 +17,10 @@
 
       <button type="submit">Guardar</button>
     </form>
+
+    <p v-if="successMessage" class="message">
+      {{ successMessage }}
+    </p>
   </section>
 </template>
 
@@ -28,8 +32,9 @@ export default {
 
   data() {
     return {
-      unit: '',
-      theme: ''
+      unit: 'metric',
+      theme: 'Claro',
+      successMessage: ''
     }
   },
 
@@ -38,8 +43,8 @@ export default {
   },
 
   mounted() {
-    this.unit = this.userPreferences.unit
-    this.theme = this.userPreferences.theme
+    this.unit = this.userPreferences.unit || 'metric'
+    this.theme = this.userPreferences.theme || 'Claro'
   },
 
   methods: {
@@ -51,7 +56,7 @@ export default {
         theme: this.theme
       })
 
-      alert('Preferencias guardadas correctamente')
+      this.successMessage = 'Preferencias guardadas correctamente'
     }
   }
 }

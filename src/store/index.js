@@ -34,12 +34,11 @@ export default createStore({
         password: 'abcd',
         favorites: [3, 4],
         preferences: {
-          unit: 'metric',
+          unit: 'imperial',
           theme: 'Oscuro'
         }
       }
     ],
-
     places: [],
     selectedPlace: null,
     forecast: [],
@@ -49,7 +48,7 @@ export default createStore({
 
   mutations: {
     SET_USER(state, user) {
-      state.user = user
+      state.user = JSON.parse(JSON.stringify(user))
       state.isAuthenticated = true
     },
 
@@ -108,8 +107,9 @@ export default createStore({
       commit('LOGOUT')
     },
 
-    updatePreferences({ commit }, preferences) {
+    updatePreferences({ commit, dispatch }, preferences) {
       commit('UPDATE_PREFERENCES', preferences)
+      dispatch('fetchPlacesWeather')
     },
 
     async fetchPlacesWeather({ commit, state }) {
@@ -117,6 +117,10 @@ export default createStore({
       commit('SET_ERROR', null)
 
       try {
+        if (!API_KEY) {
+          throw new Error('Falta la API key. Revisa el archivo .env')
+        }
+
         const unit = state.user?.preferences?.unit || 'metric'
 
         const results = await Promise.all(
@@ -158,6 +162,10 @@ export default createStore({
       commit('SET_ERROR', null)
 
       try {
+        if (!API_KEY) {
+          throw new Error('Falta la API key. Revisa el archivo .env')
+        }
+
         const city = cities.find(item => item.id === Number(cityId))
 
         if (!city) {
@@ -186,9 +194,9 @@ export default createStore({
 
         const forecastData = await forecastResponse.json()
 
-        const dailyForecast = forecastData.list.filter(item =>
-          item.dt_txt.includes('12:00:00')
-        ).slice(0, 5)
+        const dailyForecast = forecastData.list
+          .filter(item => item.dt_txt.includes('12:00:00'))
+          .slice(0, 5)
 
         const normalizedForecast = dailyForecast.map(item => ({
           date: item.dt_txt.split(' ')[0],
@@ -239,11 +247,14 @@ export default createStore({
       const cloudyDays = state.forecast.filter(day =>
         day.status.toLowerCase().includes('nubl')
       ).length
-      const clearDays = state.forecast.filter(day =>
-        day.status.toLowerCase().includes('despejado') ||
-        day.status.toLowerCase().includes('claro') ||
-        day.status.toLowerCase().includes('sole')
-      ).length
+      const clearDays = state.forecast.filter(day => {
+        const status = day.status.toLowerCase()
+        return (
+          status.includes('despejado') ||
+          status.includes('sole') ||
+          status.includes('claro')
+        )
+      }).length
 
       const average =
         temps.reduce((acc, temp) => acc + temp, 0) / temps.length
