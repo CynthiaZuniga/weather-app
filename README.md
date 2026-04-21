@@ -1,131 +1,91 @@
- Weather App - Módulo 7
+# 🌤️ Weather App - Portafolio Final
 
-Descripción
+## Descripción
 
-Aplicación web del clima desarrollada con Vue 3 que permite visualizar información de distintas ciudades.  
-En esta evolución (Módulo 7), se incorpora un sistema básico de usuarios con autenticación, estado global y personalización de la experiencia.
+Aplicación web del clima desarrollada con Vue 3 como proyecto final de portafolio.  
+La app consume una API real de clima, permite navegar entre vistas, consultar el detalle de cada ciudad, revisar estadísticas semanales, mostrar alertas meteorológicas y gestionar preferencias de usuario.
 
-La aplicación ahora reconoce al usuario que inicia sesión y adapta ciertas secciones según sus preferencias y lugares favoritos.
-
----
-
-Tecnologías utilizadas
+## Tecnologías usadas
 
 - Vue 3
 - Vue Router
 - Vuex
 - Vite
+- OpenWeather API
 - JavaScript
-- HTML + CSS
+- HTML
+- CSS
 
----
+## Funcionalidades principales
 
-Sistema de autenticación
+- Home con listado de ciudades y clima actual
+- Vista de detalle por ciudad
+- Pronóstico de varios días
+- Estadísticas semanales:
+  - temperatura mínima
+  - temperatura máxima
+  - temperatura promedio
+  - conteo de días lluviosos, nublados y soleados
+- Alertas meteorológicas simples
+- Sistema de login simulado
+- Favoritos por usuario
+- Preferencias de unidad de temperatura y tema
+- Manejo de estados de carga y error
 
-Se implementó un sistema de login simulado utilizando Vuex como gestor de estado global.
+## API utilizada
 
-Funcionalidad:
+La aplicación utiliza la API de OpenWeather.
 
-- Inicio de sesión con email y contraseña
-- Validación de credenciales en el frontend (usuarios mock)
-- Manejo de sesión activa con Vuex
-- Cierre de sesión (logout)
-- Redirección automática después de login
+## Variables de entorno
 
-Usuarios de prueba:
-cynthia@email.com
+Crear un archivo `.env` en la raíz del proyecto con:
 
-1234
+```env
+VITE_OPENWEATHER_API_KEY=TU_API_KEY_AQUI
 
-maria@email.com
+Usuarios de prueba
 
-abcd
+Usuario 1
+
+correo: cynthia@email.com
+contraseña: 1234
+
+Usuario 2
+
+correo: maria@email.com
+contraseña: abcd
 
 
----
+Rutas principales
 
-Estado global (Vuex)
+/ → Home
+/lugar/:id → Detalle del clima
+/login → Inicio de sesión
+/favoritos → Favoritos del usuario
+/preferencias → Preferencias del usuario
 
-El store maneja:
+Cómo ejecutar el proyecto en local
 
-- Usuario autenticado
-- Estado de sesión (`isAuthenticated`)
-- Lugares favoritos del usuario
-- Preferencias (unidad de temperatura y tema)
+Clonar el repositorio
 
----
+Instalar dependencias:
 
-Rutas de la aplicación
-
-| Ruta | Descripción |
-|------|------------|
-| `/` | Página principal con listado de ciudades |
-| `/lugar/:id` | Detalle del clima de una ciudad |
-| `/login` | Inicio de sesión |
-| `/favoritos` | Lugares favoritos del usuario (protegida) |
-| `/preferencias` | Preferencias del usuario (protegida) |
-
----
-
-Rutas protegidas
-
-Las rutas `/favoritos` y `/preferencias` requieren que el usuario esté autenticado.
-
-Si un usuario intenta acceder sin iniciar sesión:
-
-Es redirigido automáticamente a `/login`
----
-
-Personalización por usuario
-
-Una vez logueado, la aplicación:
-
-- Muestra el nombre del usuario en el navbar
-- Permite cerrar sesión
-- Filtra los lugares favoritos según el usuario
-- Permite configurar preferencias:
-  - Unidad de temperatura (°C / °F)
-  - Tema (claro / oscuro)
-
----
-
-Interfaz
-
-- Navbar dinámica (cambia según estado de sesión)
-- Vista de ciudades con búsqueda
-- Vista de detalle del clima
-- Vista de favoritos personalizada
-- Vista de preferencias editable
-
----
-
-Cómo ejecutar el proyecto
-
-1. Clonar repositorio
-
-```bash
-git clone https://github.com/CynthiaZuniga/weather-app.git
-
-2. Entrar al proyecto
-cd weather-app
-3. Instalar dependencias
 npm install
-4. Ejecutar el proyecto
+
+Crear archivo .env
+
+Ejecutar el proyecto:
+
 npm run dev
-5. Abrir en navegador
+
+Abrir en navegador:
+
 http://localhost:5173
 
-📂 Estructura del proyecto
-src/
-├── components/
-│   └── AppNavbar.vue
-├── views/
-│   ├── HomeView.vue
-│   ├── DetailView.vue
-│   ├── LoginView.vue
-│   ├── FavoritosView.vue
-│   └── PreferenciasView.vue
-├── router/
-├── store/
-├── services/
-└── App.vue
+Repositorio GitHub
+
+https://github.com/CynthiaZuniga/weather-app
+
+Conclusión
+
+Esta versión final integra Vue, Vue Router, Vuex, consumo de API real, manejo de estado global, estadísticas y alertas meteorológicas, quedando lista para ser presentada como proyecto de portafolio.
