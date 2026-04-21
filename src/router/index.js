@@ -34,6 +34,10 @@ const routes = [
     name: 'preferencias',
     component: PreferenciasView,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]
 
